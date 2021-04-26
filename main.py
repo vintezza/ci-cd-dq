@@ -20,7 +20,7 @@ def solve_equation(*coeffs):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Solve quadratic equation')
-    parser.add_argument('-k', type=int, nargs=3,
+    parser.add_argument('-c', type=int, nargs=3,
                         help='equation coefficients')
 
     args = parser.parse_args()
