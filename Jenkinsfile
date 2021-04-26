@@ -1,7 +1,7 @@
 pipeline {
     agent any
     triggers {
-        cron('0 18 1,15 * *')
+        cron('H 18 1,15 * *')
     }
     stages {
         stage('Run tests') {
@@ -14,9 +14,14 @@ pipeline {
         success {
             script {
                 withCredentials([usernameColonPassword(credentialsId: 'github_creds', variable: 'GITHUB_CRED')]) {
-                    currentDate = sh(returnStdout: true, script: 'date +%Y-%m-%d').trim()
+                    currentDate = '2021-05-01'//sh(returnStdout: true, script: 'date +%Y-%m-%d').trim()
+                    currentDay = sh(returnStdout: true, script: 'date +%d').trim()
                     sh "git checkout -b origin/releases/$currentDate"
                     sh "git merge develop"
+                    if (currentDay == '01') {
+                        sh "git checkout master"
+                        sh "git merge origin/releases/$currentDate"
+                    }
                 }
             }
         }
