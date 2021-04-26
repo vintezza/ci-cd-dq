@@ -9,12 +9,14 @@ pipeline {
     }
     post {
         success {
-            withCredentials(usernameColonPassword(credentialsId: 'github_creds', variable: 'GITHUB_CRED')) {
-                currentDate = sh(returnStdout: true, script: 'date +%Y-%m-%d').trim()
-                sh '''
-                git checkout -b releases/${currentDate}
-                git status
-                '''
+            script {
+                withCredentials(usernameColonPassword(credentialsId: 'github_creds', variable: 'GITHUB_CRED')) {
+                    currentDate = sh(returnStdout: true, script: 'date +%Y-%m-%d').trim()
+                    sh '''
+                    git checkout -b releases/${currentDate}
+                    git status
+                    '''
+                }
             }
         }
     }
