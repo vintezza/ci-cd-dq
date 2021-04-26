@@ -3,8 +3,8 @@ from main import solve_equation
 
 
 class TestEquationSolve(unittest.TestCase):
-    # def test_negative_d(self):
-    #     self.assertRaises(ArithmeticError, solve_equation, 2, 2, 2)
+    def test_negative_d(self):
+        self.assertRaises(ArithmeticError, solve_equation, 2, 2, 2)
 
     def test_zero_a(self):
         res = solve_equation(0, 2, 4)
