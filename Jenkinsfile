@@ -15,7 +15,7 @@ pipeline {
             script {
                 withCredentials([usernameColonPassword(credentialsId: 'github_creds', variable: 'GITHUB_CRED')]) {
                     currentDate = '2021-05-15'//sh(returnStdout: true, script: 'date +%Y-%m-%d').trim()
-                    currentDay = sh(returnStdout: true, script: 'date +%d').trim()
+                    currentDay = '01'//sh(returnStdout: true, script: 'date +%d').trim()
                     sh "git checkout -b origin/releases/$currentDate"
                     sh "git merge origin/develop"
                     if (currentDay == '01') {
