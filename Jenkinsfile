@@ -17,7 +17,7 @@ pipeline {
                     currentDate = '2021-05-01'//sh(returnStdout: true, script: 'date +%Y-%m-%d').trim()
                     currentDay = sh(returnStdout: true, script: 'date +%d').trim()
                     sh "git checkout -b origin/releases/$currentDate"
-                    sh "git merge develop"
+                    sh "git merge origin/develop"
                     if (currentDay == '01') {
                         sh "git checkout master"
                         sh "git merge origin/releases/$currentDate"
