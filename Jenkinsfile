@@ -13,7 +13,7 @@ pipeline {
                 withCredentials([usernameColonPassword(credentialsId: 'github_creds', variable: 'GITHUB_CRED')]) {
                     currentDate = sh(returnStdout: true, script: 'date +%Y-%m-%d').trim()
                     echo(currentDate)
-                    a = 'origin/releases/$currentDate'
+                    a = 'origin/releases/${currentDate}'
                     echo(a)
                     sh 'git checkout -b origin/releases/$currentDate'
                     sh 'git status'
