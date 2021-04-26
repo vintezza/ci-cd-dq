@@ -8,9 +8,9 @@ def solve_equation(*coeffs):
     if a == 0:
         return -(c / b)
     d = b * b - 4 * a * c
-    # if d < 0:
-    #     raise ArithmeticError('D < 0, complex roots are not supported')
-    if d == 0:
+    if d < 0:
+        raise ArithmeticError('D < 0, complex roots are not supported')
+    elif d == 0:
         return -b / (2 * a)
     else:
         x1 = (-b + sqrt(d)) / (2 * a)
