@@ -10,7 +10,7 @@ pipeline {
     post {
         success {
             script {
-                withCredentials(usernameColonPassword(credentialsId: 'github_creds', variable: 'GITHUB_CRED')) {
+                withCredentials([usernameColonPassword(credentialsId: 'github_creds', variable: 'GITHUB_CRED')]) {
                     currentDate = sh(returnStdout: true, script: 'date +%Y-%m-%d').trim()
                     sh '''
                     git checkout -b releases/${currentDate}
