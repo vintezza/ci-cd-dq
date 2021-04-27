@@ -20,11 +20,11 @@ pipeline {
                     sh "git config --global user.name \"Anna Rudkovskaia\""
                     sh "git remote set-url origin https://$GITHUB_CRED@github.com/vintezza/ci-cd-dq.git"
 
-                    sh "git checkout -b origin/releases/$currentDate"
-                    sh "git merge origin/develop"
+                    sh "git checkout -b releases/$currentDate"
+                    sh "git merge develop"
 
                     //sh "git commit -m new_release_$currentDate"
-                    sh "git push --progress --porcelain --set-upstream origin refs/heads/releases/$currentDate:releases/$currentDate"
+                    sh "git push --set-upstream origin releases/$currentDate"
                     if (currentDay == '01') {
                         sh "git checkout master"
                         sh "git merge origin/releases/$currentDate"
