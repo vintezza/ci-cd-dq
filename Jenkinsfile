@@ -18,9 +18,11 @@ pipeline {
                     currentDay = sh(returnStdout: true, script: 'date +%d').trim()
                     sh "git checkout -b origin/releases/$currentDate"
                     sh "git merge origin/develop"
+                    sh "git push"
                     if (currentDay == '01') {
                         sh "git checkout master"
                         sh "git merge origin/releases/$currentDate"
+                        sh "git push"
                     }
                 }
             }
