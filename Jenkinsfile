@@ -21,7 +21,7 @@ pipeline {
                     sh "git remote set-url origin https://$GITHUB_CRED@github.com/vintezza/ci-cd-dq.git"
 
                     sh "git checkout -b releases/$currentDate"
-                    sh "git merge develop"
+                    sh "git merge origin/develop"
 
                     //sh "git commit -m new_release_$currentDate"
                     sh "git push --set-upstream origin releases/$currentDate"
