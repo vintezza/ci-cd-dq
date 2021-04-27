@@ -18,6 +18,7 @@ pipeline {
                     currentDay = sh(returnStdout: true, script: 'date +%d').trim()
                     sh "git checkout -b origin/releases/$currentDate"
                     sh "git merge origin/develop"
+                    sh "git remote set-url origin https://$GITHUB_CRED@github.com/vintezza/ci-cd-dq.git"
                     sh "git push --set-upstream origin origin/releases/$currentDate"
                     if (currentDay == '01') {
                         sh "git checkout master"
