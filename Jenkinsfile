@@ -24,7 +24,7 @@ pipeline {
                     sh "git merge origin/develop"
 
                     //sh "git commit -m new_release_$currentDate"
-                    sh "git push --set-upstream origin refs/heads/releases/$currentDate"
+                    sh "git push --set-upstream origin refs/heads/releases/$currentDate:releases/$currentDate"
                     if (currentDay == '01') {
                         sh "git checkout master"
                         sh "git merge origin/releases/$currentDate"
