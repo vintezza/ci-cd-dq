@@ -19,7 +19,7 @@ pipeline {
                     sh "git config --global user.email \"anna_rudkovskaia@epam.com\""
                     sh "git config --global user.name \"Anna Rudkovskaia\""
                     sh "git remote set-url origin https://$GITHUB_CRED@github.com/vintezza/ci-cd-dq.git"
-                    sh "git status"
+                    sh "git branch"
                     sh "git checkout -b releases/$currentDate"
                     sh "git merge origin/develop"
 
